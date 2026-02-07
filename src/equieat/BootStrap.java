@@ -31,11 +31,14 @@ public class BootStrap extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         bootStrap = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        LoadingProcess = new javax.swing.JLabel();
         Welcome = new javax.swing.JLabel();
-        Background = new javax.swing.JLabel();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        Loading = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
         getContentPane().setLayout(new java.awt.BorderLayout());
 
         bootStrap.setBackground(new java.awt.Color(33, 174, 192));
@@ -43,17 +46,21 @@ public class BootStrap extends javax.swing.JFrame {
         bootStrap.setPreferredSize(new java.awt.Dimension(814, 300));
         bootStrap.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel1.setText("Loading");
-        bootStrap.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+        LoadingProcess.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        LoadingProcess.setText("Loading");
+        bootStrap.add(LoadingProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
         Welcome.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         Welcome.setText("Launching EquiEat");
         bootStrap.add(Welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 220, 80));
+        bootStrap.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 814, -1));
 
-        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/equieat/assets/BootStrap.png"))); // NOI18N
-        Background.setText("Launching EquiEat");
-        bootStrap.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 814, 310));
+        Loading.setText("0%");
+        bootStrap.add(Loading, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 290, -1, -1));
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/equieat/BootStrap.png"))); // NOI18N
+        background.setText("jLabel2");
+        bootStrap.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 814, 310));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -63,7 +70,7 @@ public class BootStrap extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bootStrap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bootStrap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -93,14 +100,34 @@ public class BootStrap extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new BootStrap().setVisible(true));
+        BootStrap BS = new BootStrap();
+        BS.setVisible(true);
+        
+        try{
+            
+            for(int i = 0; i<=1; i++){
+                Thread.sleep(10);
+                BS.Loading.setText(i + "%");
+                
+                if (i== 10){
+                    BS.LoadingProcess.setText("Preparing GUI");
+                }
+                if (i == 20)
+            }
+            
+        } catch(Exception e){
+            
+        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Background;
+    private javax.swing.JLabel Loading;
+    private javax.swing.JLabel LoadingProcess;
     private javax.swing.JLabel Welcome;
+    private javax.swing.JLabel background;
     private javax.swing.JPanel bootStrap;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JProgressBar jProgressBar1;
     // End of variables declaration//GEN-END:variables
 }
